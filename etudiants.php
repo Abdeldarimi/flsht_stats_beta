@@ -19,6 +19,7 @@ include 'header.php';
 include 'layout_top.php';
 
 ?>
+
 <div class="max-w-6xl mx-auto">
 <header class="mb-4">
     <a href="index.php" class="hover:text-blue-500">عودة للوحة</a>
@@ -41,7 +42,8 @@ include 'layout_top.php';
     <button type="submit" class="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-400 transition">فلتر</button>
 </form>
 
-<table class="w-full text-right border-collapse rounded overflow-hidden">
+    <div class="border rounded-lg shadow overflow-y-auto overflow-x-auto max-h-[600px] direction-ltr scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-gray-200">
+    <table class="w-full text-sm text-left border-collapse">
     <thead class="bg-blue-50">
         <tr>
             <th class="p-2 border">الاسم</th>

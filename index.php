@@ -1,7 +1,7 @@
 <?php
 require_once 'db.php';
 
-$total_etudiants = $pdo->query("SELECT COUNT(*) FROM etudiants")->fetchColumn();
+$total_etudiants = $pdo->query("SELECT ( (SELECT COUNT(*) FROM etudiants) + (SELECT COUNT(*) FROM etudiants_diplomé)) AS total")->fetchColumn();
 $reussi_etudiants = $pdo->query("SELECT COUNT(*) FROM etudiants WHERE reussi=1")->fetchColumn();
 $failed_etudiants = $total_etudiants - $reussi_etudiants;
 
@@ -12,7 +12,7 @@ include 'header.php';
 include 'layout_top.php';
 ?>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class=" grid grid-cols-1 md:grid-cols-3 gap-6"">
     <div class="bg-white shadow rounded p-6 flex flex-col items-center">
         <div class="text-gray-500 mb-2">إجمالي الطلاب</div>
         <div class="text-3xl font-bold text-blue-600"><?php echo $total_etudiants; ?></div>

@@ -1,0 +1,16 @@
+table{
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+}
+table th, table td {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 600;
+
+}
+input, select {
+    font-size: 12px;
+}

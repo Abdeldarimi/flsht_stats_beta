@@ -10,6 +10,7 @@ $q = "SELECT n.id, n.matiere, n.note,  e.prenom, e.nom, e.division
 $stmt = $pdo->query($q);
 $rows = $stmt->fetchAll();
 
+include 'header.php';
 include 'layout_top.php';
 ?>
 

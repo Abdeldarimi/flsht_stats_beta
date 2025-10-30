@@ -30,7 +30,6 @@ if(isset($_POST['login'])){
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>تسجيل الدخول</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-white flex items-center justify-center min-h-screen">
 <div class="w-full max-w-md p-6 border rounded shadow-sm">
