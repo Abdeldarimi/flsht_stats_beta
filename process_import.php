@@ -25,8 +25,7 @@ $count = 0;
 foreach ($rows as $i => $row) {
     if ($i === 0) continue; // skip header
 
-    // Process row (مثل اللي عندك)
-    // ...
+
     $count++;
 
     $percent = intval(($count / $total) * 100);

@@ -4,13 +4,154 @@ table{
 table th, table td {
     font-size: 10px;
     font-weight: 600;
+
 }
 
 label {
     font-size: 16px;
     font-weight: 600;
-
 }
 input, select {
     font-size: 12px;
 }
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px;
+}
+.menu input{
+    font-size: 14px;
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: all 0.3s ease;
+}
+.menu input:focus{
+    border-color: #007BFF;
+    box-shadow: 0 0 16px rgba(0, 123, 255, 0.3);
+}
+.btns{
+    display: flex;
+    gap: 6px;
+    direction: ltr;
+    background-color: #dfd3d327;
+    padding: 8px;
+    border-radius: 8px;
+}
+.btns a{
+    text-decoration: none;
+    background-color: #dfdcdc;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.btns a:active{
+    background-color: #0da707;
+    color: white;
+    box-shadow: 0 0 16px rgb(77, 255, 0);
+}
+.btns a:first-child:hover{
+    background-color: #0da707;
+    color: white;
+    box-shadow: 0 0 16px rgb(77, 255, 0);
+}
+.btns a:hover{
+    background-color: #007BFF;
+    text-shadow: 0 0 8px rgb(19, 100, 192);
+    color: white;
+    box-shadow: 0 0 16px rgb(0, 123, 255);
+}
+.btns a.active-btn {
+    background-color: #007BFF;
+    color: white;
+    box-shadow: 0 0 16px rgb(0, 123, 255);
+}
+.red{
+    text-decoration: none;
+    background-color: #dfdcdc;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    box-shadow:  0 0 10px rgba(56, 50, 50, 0.326);
+}
+.red:hover{
+    background-color: #ba1313;
+    color: white;
+    box-shadow: 0 0 16px rgb(172, 4, 4);
+}
+
+#diplomeSelect{
+    font-size: 14px;
+    padding: 2px 14px;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: all 0.3s ease;
+}
+/* #tab-diplome{
+    flex-direction: column;
+    max-height: 350px;
+    direction: ltr;
+    gap:20px;
+    padding: 10px;
+
+} */
+.cards {
+    display: grid;
+    gap: 1rem;
+    /* نحدد عدد الأعمدة: حد أدنى 200px للكارت، حد أقصى 1fr لتعبئة الفراغ */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.diplome-card {
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.diplome-card p{
+    direction: rtl;
+    font-size: 14px;
+}
+
+
+
+@media (min-width: 1600px) {
+    .cards {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 599px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -42,7 +42,6 @@ if(isset($_POST['login'])){
         <input name="password" type="password" placeholder="كلمة السر" class="w-full border p-2 rounded" required>
         <button name="login" class="w-full py-2 rounded bg-blue-500 hover:bg-blue-400 text-white transition">دخول</button>
     </form>
-    <p class="text-sm mt-3 text-gray-600">استعمل create_admin.php لإنشاء حساب Admin</p>
 </div>
 </body>
 </html>

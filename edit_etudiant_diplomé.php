@@ -9,7 +9,7 @@ if (!isset($_GET['APO'])) {
 
 $APO = intval($_GET['APO']);
 
-$stmt = $pdo->prepare("SELECT * FROM etudiants WHERE CODAPO = ?");
+$stmt = $pdo->prepare("SELECT * FROM etudiants_diplomé WHERE CODAPO = ?");
 $stmt->execute([$APO]);
 $etudiant = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -18,20 +18,22 @@ if (!$etudiant) {
 }
 
 if (isset($_POST['submit'])) {
-    $cne = $_POST['cne'];
     $nom = $_POST['Nom'];
     $prenom = $_POST['Prenom'];
+    $cne = $_POST['cne'];
     $cin = $_POST['CIN'];
     $date_naiss = $_POST['DATE_NAIS'];
     $sexe = $_POST['Sexe'];
     $lieux = $_POST['Lieux_de_nais'];
     $ni = $_POST['NI'];
+    $filiere = $_POST['Filiere'];
     $diplome = $_POST['Diplome'];
-    $inscrit = $_POST['Inscrit'];
+    $pays = $_POST['Pays'];
+    $hand = $_POST['Hand'];
 
-    $stmt = $pdo->prepare("UPDATE etudiants SET cne=?, Nom=?, Prenom=?,  CIN=?, Date_de_nais=?, Sexe=?, Lieu_de_nais=?, NI=?,Inscrit=?, Diplome=? WHERE CODAPO=?");
-    if ($stmt->execute([$cne,$nom,$prenom,$cin,$date_naiss,$sexe,$lieux,$ni,$inscrit,$diplome,$APO])) {
-        header("Location: etudiants.php?msg=updated");
+    $stmt = $pdo->prepare("UPDATE etudiants_diplomé SET Nom=?, Prenom=?, cne=?, CIN=?, DATE_NAIS=?, Sexe=?, Lieux_de_nais=?, NI=?, Filiere=?, Diplome=?, Pays=?, Hand=? WHERE CODAPO=?");
+    if ($stmt->execute([$nom,$prenom,$cne,$cin,$date_naiss,$sexe,$lieux,$ni,$filiere,$diplome,$pays,$hand,$APO])) {
+        header("Location: etudiants_diplomé.php?msg=updated");
         exit;
     } else {
         echo "Erreur: " . implode(", ", $stmt->errorInfo());
@@ -46,11 +48,6 @@ include 'layout_top.php';
     <h2 class="text-sm font-semibold mb-1 text-center">تعديل بيانات الطالب</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-         <div>
-            <label class="block mb-1 font-medium">CNE</label>
-            <input type="text" name="cne" value="<?= htmlspecialchars($etudiant['cne']) ?>" required
-                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
-        </div>
         <div>
             <label class="block mb-1 font-medium">Nom</label>
             <input type="text" name="Nom" value="<?= htmlspecialchars($etudiant['Nom']) ?>" required
@@ -64,6 +61,12 @@ include 'layout_top.php';
         </div>
 
         <div>
+            <label class="block mb-1 font-medium">CNE</label>
+            <input type="text" name="cne" value="<?= htmlspecialchars($etudiant['cne']) ?>" required
+                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+
+        <div>
             <label class="block mb-1 font-medium">CIN</label>
             <input type="text" name="CIN" value="<?= htmlspecialchars($etudiant['CIN']) ?>"
                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
@@ -71,7 +74,7 @@ include 'layout_top.php';
 
         <div>
             <label class="block mb-1 font-medium">Date Nais</label>
-            <input type="text" name="DATE_NAIS" value="<?= htmlspecialchars($etudiant['Date_de_nais']) ?>"
+            <input type="text" name="DATE_NAIS" value="<?= htmlspecialchars($etudiant['DATE_NAIS']) ?>"
                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
         </div>
 
@@ -83,7 +86,7 @@ include 'layout_top.php';
 
         <div>
             <label class="block mb-1 font-medium">Lieux de Nais</label>
-            <input type="text" name="Lieux_de_nais" value="<?= htmlspecialchars($etudiant['Lieu_de_nais']) ?>"
+            <input type="text" name="Lieux_de_nais" value="<?= htmlspecialchars($etudiant['Lieux_de_nais']) ?>"
                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
         </div>
 
@@ -94,21 +97,28 @@ include 'layout_top.php';
         </div>
 
         <div>
+            <label class="block mb-1 font-medium">Filiere</label>
+            <input type="text" name="Filiere" value="<?= htmlspecialchars($etudiant['Filiere']) ?>"
+                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+
+        <div>
             <label class="block mb-1 font-medium">Diplome</label>
             <input type="text" name="Diplome" value="<?= htmlspecialchars($etudiant['Diplome']) ?>"
                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
         </div>
 
         <div>
-            <label class="block mb-1 font-medium">Inscrit</label>
-            <select name="Inscrit" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
-                <option value="OUI" <?= $etudiant['Inscrit'] === 'OUI' ? 'selected' : '' ?>>OUI</option>
-                <option value="NON" <?= $etudiant['Inscrit'] === 'NON' ? 'selected' : '' ?>>NON</option>
-            </select>
+            <label class="block mb-1 font-medium">Pays</label>
+            <input type="text" name="Pays" value="<?= htmlspecialchars($etudiant['Pays']) ?>"
+                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
         </div>
 
-        
-        
+        <div>
+            <label class="block mb-1 font-medium">HAND</label>
+            <input type="text" name="Hand" value="<?= htmlspecialchars($etudiant['Hand']) ?>"
+                   class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
     </div>
 
     <div class="text-center ">
@@ -116,5 +126,6 @@ include 'layout_top.php';
                 class="px-7 py-1 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition">
             تعديل
         </button>
+        <a href="etudiants_diplomé.php"> cancel</a>
     </div>
 </form>

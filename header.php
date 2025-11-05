@@ -12,7 +12,7 @@
         style="max-height:40px; width:auto;"
     >
       <h1 class="text-1xl md:text-1xl font-bold text-center text-blue-600" style="display:flex; flex-direction: column;">نظام الإحصائيات - Système de statistiques</h1>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </header>
 
 

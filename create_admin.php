@@ -1,5 +1,7 @@
 <?php
 require 'db.php';
+require 'auth.php';
+require_login();
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $username = $_POST['username'] ?? 'admin';
     $password = $_POST['password'] ?? 'admin123';
