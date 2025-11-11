@@ -1,6 +1,6 @@
 <?php
 
-// حساب النسب
+
 $total_students = $pdo->query("SELECT COUNT(*) FROM etudiants")->fetchColumn();
 $total_masculins = $pdo->query("SELECT COUNT(*) FROM etudiants WHERE UPPER(TRIM(Sexe)) = 'M'")->fetchColumn();
 $total_feminins = $pdo->query("SELECT COUNT(*) FROM etudiants WHERE UPPER(TRIM(Sexe)) = 'F'")->fetchColumn();
@@ -13,11 +13,11 @@ $percent_f = ($total_students > 0) ? ($total_feminins / $total_students) * 100 :
   <div class="text-gray-600 mb-3 font-semibold">Répartition M / F</div>
   <div class="relative w-32 h-32">
     <svg class="w-full h-full transform -rotate-90">
-      <!-- خلفية رمادية -->
-      <circle cx="50%" cy="50%" r="40%" stroke="#0055ffff" stroke-width="20" fill="none"/>
 
-      <!-- الجزء الأزرق للذكور -->
-      <circle cx="50%" cy="50%" r="40%" stroke="#1100ffff" stroke-width="0" fill="none"
+    <circle cx="50%" cy="50%" r="40%" stroke="#0055ffff" stroke-width="20" fill="none"/>
+
+
+    <circle cx="50%" cy="50%" r="40%" stroke="#1100ffff" stroke-width="0" fill="none"
         stroke-dasharray="251.2"
         stroke-dashoffset="<?php echo 251.2 * (1 - $percent_m / 100); ?>"
         stroke-linecap="round"/>

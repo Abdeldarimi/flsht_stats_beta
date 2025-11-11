@@ -28,3 +28,4 @@
             <button id="toggleSidebar" class="p-2 border rounded">القائمة</button>
             <div class="font-bold">نظام الإحصائيات</div>
         </div>
+Fait à Tétouan, le 7 novembre 2025
